@@ -547,8 +547,8 @@ class PluginPositionsInfo extends CommonDBTM {
                
          echo "<h3>".__('Direct link', 'positions')." : ";
 
-         echo "<a href='".Toolbox::getItemTypeFormURL($itemclass->getType()).
-         "?id=".$itemclass->fields["id"]."' target='_blank'>";
+         echo "<a href='".$itemclass->getLinkURL().
+         "' target='_blank'>";
          $title = $itemclass->fields["name"];
          $plugin = new Plugin();
          if ($plugin->isActivated("resources")
