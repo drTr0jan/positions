@@ -465,48 +465,13 @@ class PluginPositionsInfo extends CommonDBTM {
       }
    }
    
-   static function getTypeFields($searchOption) {
-      
-      $dropdown_tables = array('glpi_entities',
-                               'glpi_locations',
-                               'glpi_states',
-                               'glpi_plugin_resources_contracttypes',
-                               'glpi_plugin_resources_resourcestates',
-                               'glpi_plugin_resources_departments',
-                               'glpi_plugin_resources_leavingreasons',
-                               'glpi_groups',
-                               'glpi_domains',
-                               'glpi_operatingsystems',
-                               'glpi_operatingsystemservicepacks',
-                               'glpi_operatingsystemversions',
-                               'glpi_networks',
-                               'glpi_computermodels',
-                               'glpi_computertypes',
-                               'glpi_monitormodels',
-                               'glpi_monitortypes',
-                               'glpi_networkequipmentmodels',
-                               'glpi_networkequipmenttypes',
-                               'glpi_peripheralmodels',
-                               'glpi_peripheraltypes',
-                               'glpi_phonemodels',
-                               'glpi_phonetypes',
-                               'glpi_printermodels',
-                               'glpi_printertypes');
-      
-      if (in_array($searchOption['table'],$dropdown_tables)) {
-            return "dropdown";
-      }
-      return false;
-   }
-   
    static function getFieldsValue($searchOption,$field,$itemclass) {
       global $CFG_GLPI;
       
       $display = $itemclass->fields[$field['Field']];
       echo "<h3><span class='title'>".$searchOption['name']." : </span>";
       
-      $type = self::getTypeFields($searchOption);
-      if ($type == 'dropdown') {
+      if ($searchOption['datatype'] == 'dropdown') {
          echo Dropdown::getDropdownName($searchOption['table'],$display);
          
       } else if (isset($searchOption['datatype']) 
