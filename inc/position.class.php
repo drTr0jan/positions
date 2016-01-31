@@ -921,7 +921,6 @@ class PluginPositionsPosition extends CommonDBTM {
 
                   if ($options['id']) {
                      echo "<tr class='tab_bg_2'>";
-                     $form = Toolbox::getItemTypeFormURL($self->getType());
                      echo "<td colspan='4' class='center'>" .
                      $self->getLink();
                      echo "</td></tr>";
